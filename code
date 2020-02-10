@@ -1,0 +1,19 @@
+function electionsWinners(votes, k) {
+    //sorting helps to obtain the largest alue in array
+    votes.sort((a,b) => b-a);
+    //outputs the probable upcoming winner when everybody has voted
+    if(k === 0){
+        return (votes[0]==votes[1]) ? 0 : 1;
+    }
+    //checks which person has a higher chance of winning 
+    //assuming all the votes go to that person 
+    if(k!=0){
+        let greatestValue = votes[0];
+        let count = 0;
+        votes.reverse(); 
+        for(let x = 0;x!=votes.length;x++){
+            if((votes[x]+k)>greatestValue) count++;
+        }
+        return count;
+    }
+}
